@@ -1,0 +1,69 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\Animals\animal1.jpeg" />
+    <None Remove="Images\Animals\animal2.jpeg" />
+    <None Remove="Images\Animals\animal3.jpeg" />
+    <None Remove="Images\Animals\animal4.jpeg" />
+    <None Remove="Images\Flowers\flower1.jpeg" />
+    <None Remove="Images\Flowers\flower2.jpeg" />
+    <None Remove="Images\Flowers\flower3.jpeg" />
+    <None Remove="Images\Flowers\flower4.jpeg" />
+    <None Remove="Images\Flowers\flower5.jpeg" />
+    <None Remove="Images\Landscapes\landscape1.jpeg" />
+    <None Remove="Images\Landscapes\landscape2.jpeg" />
+    <None Remove="Images\Landscapes\landscape3.jpeg" />
+    <None Remove="Images\Landscapes\landscape4.jpeg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\Animals\animal1.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Animals\animal2.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Animals\animal3.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Animals\animal4.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Flowers\flower1.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Flowers\flower2.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Flowers\flower3.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Flowers\flower4.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Flowers\flower5.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Landscapes\landscape1.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Landscapes\landscape2.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Landscapes\landscape3.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Landscapes\landscape4.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>
