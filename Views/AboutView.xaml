@@ -1,0 +1,31 @@
+﻿<Window x:Class="MemoryGame.Views.AboutView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="About" Height="300" Width="400"
+        WindowStartupLocation="CenterScreen"
+        Background="#FDECEF">
+
+    <Grid Margin="20">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Nume: Urse Sabina-Teodora"
+                       FontSize="16" FontWeight="Bold" Foreground="#333" Margin="0,0,0,10"/>
+
+            <TextBlock Margin="0,0,0,10">
+                <Run Text="Email: "/>
+                <Hyperlink NavigateUri="mailto:sabina.urse@student.unitbv.ro" RequestNavigate="Hyperlink_RequestNavigate">
+                    sabina.urse@student.unitbv.ro
+                </Hyperlink>
+            </TextBlock>
+
+            <TextBlock Text="Grupa: 10LF234"
+                       FontSize="14" Foreground="#333" Margin="0,0,0,10"/>
+
+            <TextBlock Text="Specializare: Informatică" 
+                       FontSize="14" Foreground="#333" Margin="0,0,0,10"/>
+
+            <Button Content="OK" Width="100" Margin="10" 
+                    Click="OkButton_Click"
+                    Background="#FFCBA4" Foreground="Black" BorderBrush="#FF9A8B"/>
+        </StackPanel>
+    </Grid>
+</Window>

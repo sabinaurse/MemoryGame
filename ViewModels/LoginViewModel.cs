@@ -12,6 +12,7 @@ using Microsoft.Win32;
 using MemoryGame.Commands;
 using MemoryGame.Models;
 using MemoryGame.Services;
+using MemoryGame.Views;
 
 namespace MemoryGame.ViewModels
 {
@@ -104,7 +105,19 @@ namespace MemoryGame.ViewModels
 
         private void Play()
         {
-            // Navighează către pagina de joc
+            var setupView = new SetupView();
+            setupView.DataContext = new SetupViewModel(); // foarte important!
+            setupView.Show();
+
+            // Închide LoginView
+            foreach (var window in System.Windows.Application.Current.Windows)
+            {
+                if (window is Views.LoginView loginView)
+                {
+                    loginView.Close();
+                    break;
+                }
+            }
         }
         private void BrowseImage()
         {

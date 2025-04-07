@@ -1,0 +1,66 @@
+﻿<Window x:Class="MemoryGame.Views.SetupView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Game Setup" Height="600" Width="400"
+        WindowStartupLocation="CenterScreen"
+        Background="#FDECEF">
+
+    <Grid Margin="20">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="250">
+
+            <!-- Alegere categorie -->
+            <TextBlock Text="Choose Category:" FontWeight="Bold" Margin="0,5"/>
+            <ComboBox ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedCategory}" Margin="0,5"/>
+
+            <!-- Alegere mod de joc -->
+            <TextBlock Text="Select Mode:" FontWeight="Bold" Margin="0,10,0,0"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5">
+                <RadioButton Content="Standard" IsChecked="{Binding IsStandardMode}" Margin="5"/>
+                <RadioButton Content="Custom" IsChecked="{Binding IsCustomMode}" Margin="5"/>
+            </StackPanel>
+
+            <!-- Dimensiuni doar dacă e Custom -->
+            <StackPanel Margin="0,10">
+                <StackPanel.Style>
+                    <Style TargetType="StackPanel">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsCustomMode}" Value="True">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </StackPanel.Style>
+
+                <TextBlock Text="Rows (M):" Margin="0,5"/>
+                <ComboBox ItemsSource="{Binding AvailableSizes}" SelectedItem="{Binding SelectedRows}" Width="100" Margin="0,5"/>
+
+                <TextBlock Text="Columns (N):" Margin="0,5"/>
+                <ComboBox ItemsSource="{Binding AvailableSizes}" SelectedItem="{Binding SelectedColumns}" Width="100" Margin="0,5"/>
+            </StackPanel>
+
+            <!-- Setare timp -->
+            <TextBlock Text="Set Time (seconds):" FontWeight="Bold" Margin="0,10,0,0"/>
+            <TextBox Text="{Binding TimeLimit}" Width="100" Margin="0,5" HorizontalAlignment="Center"/>
+
+            <!-- Buton Start Game -->
+            <Button Content="Start Game" Command="{Binding StartGameCommand}" Margin="0,20,0,0"
+                    Width="200" Height="40"
+                    Background="#FFCBA4" Foreground="Black" BorderBrush="#FF9A8B"/>
+
+            <!-- 🔥 Butoane suplimentare uniformizate -->
+            <StackPanel Orientation="Vertical" Margin="0,20,0,0" HorizontalAlignment="Center">
+                <Button Content="Open Game" Width="200" Height="40" Margin="0,5"
+                        Background="#FFCBA4" Foreground="Black" BorderBrush="#FF9A8B"/>
+                <Button Content="Statistics" Width="200" Height="40" Margin="0,5"
+                        Background="#FFCBA4" Foreground="Black" BorderBrush="#FF9A8B"/>
+                <Button Content="Exit" Width="200" Height="40" Margin="0,5"
+                        Background="#FFCBA4" Foreground="Black" BorderBrush="#FF9A8B"/>
+                <Button Content="Help - About" Width="200" Height="40" Margin="0,5"
+                        Command="{Binding AboutCommand}"
+                        Background="#FFCBA4" Foreground="Black" BorderBrush="#FF9A8B"/>
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</Window>

@@ -22,6 +22,66 @@
     <None Remove="Images\Landscapes\landscape2.jpeg" />
     <None Remove="Images\Landscapes\landscape3.jpeg" />
     <None Remove="Images\Landscapes\landscape4.jpeg" />
+    <None Remove="Tiles\Animals\arici.jpeg" />
+    <None Remove="Tiles\Animals\armadillo.jpeg" />
+    <None Remove="Tiles\Animals\capybara.jpeg" />
+    <None Remove="Tiles\Animals\cat.jpeg" />
+    <None Remove="Tiles\Animals\dog.jpeg" />
+    <None Remove="Tiles\Animals\duck.jpeg" />
+    <None Remove="Tiles\Animals\eagle.jpeg" />
+    <None Remove="Tiles\Animals\fish.jpeg" />
+    <None Remove="Tiles\Animals\fox.jpeg" />
+    <None Remove="Tiles\Animals\goat.jpeg" />
+    <None Remove="Tiles\Animals\lizard.jpeg" />
+    <None Remove="Tiles\Animals\mcie.jpeg" />
+    <None Remove="Tiles\Animals\panda.jpeg" />
+    <None Remove="Tiles\Animals\panther.jpeg" />
+    <None Remove="Tiles\Animals\parrot.jpeg" />
+    <None Remove="Tiles\Animals\peacock.jpeg" />
+    <None Remove="Tiles\Animals\quocka.jpeg" />
+    <None Remove="Tiles\Animals\raccoon.jpeg" />
+    <None Remove="Tiles\Animals\redpanda.jpeg" />
+    <None Remove="Tiles\Animals\sloth.jpeg" />
+    <None Remove="Tiles\Animals\squirrel.jpeg" />
+    <None Remove="Tiles\Animals\toucan.jpeg" />
+    <None Remove="Tiles\Animals\turtle.jpeg" />
+    <None Remove="Tiles\Animals\zebra.jpeg" />
+    <None Remove="Tiles\Flags\albania.jpeg" />
+    <None Remove="Tiles\Flags\argenmtina.png" />
+    <None Remove="Tiles\Flags\bosnia.png" />
+    <None Remove="Tiles\Flags\brazil.jpg" />
+    <None Remove="Tiles\Flags\canada.png" />
+    <None Remove="Tiles\Flags\colombia.png" />
+    <None Remove="Tiles\Flags\czech.png" />
+    <None Remove="Tiles\Flags\download.png" />
+    <None Remove="Tiles\Flags\england.png" />
+    <None Remove="Tiles\Flags\flag-square-250.png" />
+    <None Remove="Tiles\Flags\france.png" />
+    <None Remove="Tiles\Flags\greece.png" />
+    <None Remove="Tiles\Flags\hungary.png" />
+    <None Remove="Tiles\Flags\ireland.png" />
+    <None Remove="Tiles\Flags\italy.png" />
+    <None Remove="Tiles\Flags\japan.png" />
+    <None Remove="Tiles\Flags\netherlands.png" />
+    <None Remove="Tiles\Flags\poland.png" />
+    <None Remove="Tiles\Flags\portugal.png" />
+    <None Remove="Tiles\Flags\roamnia.png" />
+    <None Remove="Tiles\Flags\spain.png" />
+    <None Remove="Tiles\Flags\sweden.png" />
+    <None Remove="Tiles\Flags\switzerland.png" />
+    <None Remove="Tiles\Flags\turkey.png" />
+    <None Remove="Tiles\Flags\usa.jpeg" />
+    <None Remove="Tiles\Fruits\apple.jpeg" />
+    <None Remove="Tiles\Fruits\grapes.jpeg" />
+    <None Remove="Tiles\Fruits\kiwi.jpeg" />
+    <None Remove="Tiles\Fruits\mango.jpeg" />
+    <None Remove="Tiles\Fruits\orange.jpeg" />
+    <None Remove="Tiles\Fruits\peach.jpeg" />
+    <None Remove="Tiles\Fruits\pear.jpeg" />
+    <None Remove="Tiles\Fruits\pineapple.jpeg" />
+    <None Remove="Tiles\Fruits\rodie.jpeg" />
+    <None Remove="Tiles\Fruits\strawberry.jpeg" />
+    <None Remove="Tiles\Fruits\zmeura.jpeg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -62,6 +122,189 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\Landscapes\landscape4.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Animals\arici.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Animals\armadillo.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Animals\capybara.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Animals\cat.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Animals\dog.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Animals\duck.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Animals\eagle.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Animals\fish.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Animals\fox.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Animals\goat.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Animals\lizard.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Animals\mcie.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Animals\panda.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Animals\panther.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Animals\parrot.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Animals\peacock.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Animals\quocka.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Animals\raccoon.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Animals\redpanda.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Animals\sloth.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Animals\squirrel.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Animals\toucan.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Animals\turtle.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Animals\zebra.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Flags\albania.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Flags\argenmtina.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Flags\bosnia.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Tiles\Flags\brazil.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Flags\canada.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Flags\colombia.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Flags\czech.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Flags\download.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Flags\england.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Flags\flag-square-250.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Flags\france.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Flags\greece.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Flags\hungary.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Flags\ireland.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Flags\italy.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Flags\japan.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Flags\netherlands.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Flags\poland.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Flags\portugal.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Flags\roamnia.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Flags\spain.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Flags\sweden.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Flags\switzerland.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Flags\turkey.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Flags\usa.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Fruits\apple.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Fruits\grapes.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Fruits\kiwi.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Fruits\mango.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Fruits\orange.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Fruits\peach.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Fruits\pear.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Fruits\pineapple.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Fruits\rodie.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Fruits\strawberry.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tiles\Fruits\zmeura.jpeg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
