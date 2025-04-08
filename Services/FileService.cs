@@ -40,5 +40,22 @@ namespace MemoryGame.Services
 
             // TODO: șterge jocurile și statisticile asociate
         }
+
+        public static void UpdateStatistics(string username, bool won)
+        {
+            var users = LoadUsers();
+            var user = users.FirstOrDefault(u => u.Username == username);
+
+            if (user != null)
+            {
+                user.GamesPlayed++;
+                if (won)
+                    user.GamesWon++;
+
+                string json = JsonSerializer.Serialize(users, new JsonSerializerOptions { WriteIndented = true });
+                File.WriteAllText(filePath, json);
+            }
+        }
+
     }
 }

@@ -1,7 +1,7 @@
 ﻿<Window x:Class="MemoryGame.Views.GameView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:local="clr-namespace:MemoryGame.Converters" 
+        xmlns:local="clr-namespace:MemoryGame.Converters"
         Title="Memory Game" Height="600" Width="800"
         WindowStartupLocation="CenterScreen"
         Background="#FDECEF">
@@ -14,15 +14,43 @@
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <!-- sus: timer + buton -->
             <RowDefinition Height="*"/>
+            <!-- jos: grilă cărți -->
         </Grid.RowDefinitions>
 
-        <!-- Timer sus -->
-        <TextBlock Text="{Binding TimeLeft}" 
-                   FontSize="24" 
-                   HorizontalAlignment="Center" 
-                   Margin="0,0,0,20"
-                   Foreground="#333" />
+        <Grid Grid.Row="0" Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Timer în stânga -->
+            <TextBlock Text="{Binding TimeLeft}" 
+               FontSize="24"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Left"
+               Foreground="#333" 
+               Margin="0,0,10,0"/>
+
+            <!-- Butoanele în dreapta, într-un StackPanel -->
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,0,0">
+                <Button Content="Save Game"
+                Command="{Binding SaveGameCommand}"
+                Width="120" Height="40"
+                Margin="0,0,10,0"
+                Background="#FFCBA4"
+                Foreground="Black"
+                BorderBrush="#FF9A8B"/>
+                <Button Content="Exit"
+                Command="{Binding ExitGameCommand}"
+                Width="80" Height="40"
+                Background="#FFCBA4"
+                Foreground="Black"
+                BorderBrush="#FF9A8B"/>
+            </StackPanel>
+        </Grid>
+
 
         <!-- Grila de cărți -->
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
@@ -35,11 +63,11 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Button Command="{Binding DataContext.FlipTileCommand, RelativeSource={RelativeSource AncestorType=Window}}"
-        CommandParameter="{Binding}"
-        Background="Transparent" 
-        BorderBrush="Transparent"
-        Margin="5" 
-        Padding="0">
+                                CommandParameter="{Binding}"
+                                Background="Transparent"
+                                BorderBrush="Transparent"
+                                Margin="5"
+                                Padding="0">
                             <Grid Width="80" Height="80">
                                 <Grid.Style>
                                     <Style TargetType="Grid">
@@ -53,12 +81,11 @@
                                     </Style>
                                 </Grid.Style>
 
-                                <Image Source="{Binding ImagePath}" 
-               Stretch="UniformToFill"
-               Visibility="{Binding IsFlipped, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                <Image Source="{Binding ImagePath}"
+                                       Stretch="UniformToFill"
+                                       Visibility="{Binding IsFlipped, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                             </Grid>
                         </Button>
-
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

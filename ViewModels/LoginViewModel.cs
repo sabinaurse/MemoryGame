@@ -102,14 +102,14 @@ namespace MemoryGame.ViewModels
             LoadUsers();
             SelectedUsername = "";
         }
-
         private void Play()
         {
             var setupView = new SetupView();
-            setupView.DataContext = new SetupViewModel(); // foarte important!
+            var setupViewModel = new SetupViewModel();
+            setupViewModel.CurrentUsername = SelectedUsername;
+            setupView.DataContext = setupViewModel;
             setupView.Show();
 
-            // Închide LoginView
             foreach (var window in System.Windows.Application.Current.Windows)
             {
                 if (window is Views.LoginView loginView)
@@ -119,6 +119,7 @@ namespace MemoryGame.ViewModels
                 }
             }
         }
+
         private void BrowseImage()
         {
             var dialog = new OpenFileDialog

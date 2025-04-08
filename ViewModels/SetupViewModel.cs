@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
 using MemoryGame.Commands;
+using MemoryGame.Services;
 using MemoryGame.Views;
 
 namespace MemoryGame.ViewModels
@@ -24,6 +25,12 @@ namespace MemoryGame.ViewModels
         {
             get => selectedCategory;
             set { selectedCategory = value; OnPropertyChanged(); }
+        }
+        private string currentUsername;
+        public string CurrentUsername
+        {
+            get => currentUsername;
+            set { currentUsername = value; OnPropertyChanged(); }
         }
 
         private bool isStandardMode = true;
@@ -72,6 +79,9 @@ namespace MemoryGame.ViewModels
         {
             StartGameCommand = new RelayCommand(_ => StartGame());
             AboutCommand = new RelayCommand(_ => OpenAboutWindow());  // Corect instanțierea comenzii
+            SaveGameCommand = new RelayCommand(_ => SaveGame());
+            OpenGameCommand = new RelayCommand(_ => OpenGame());
+            OpenStatisticsCommand = new RelayCommand(_ => OpenStatistics()); // NOU
         }
 
         private void OpenAboutWindow()
@@ -103,7 +113,7 @@ namespace MemoryGame.ViewModels
                 return;
             }
 
-            var gameViewModel = new GameViewModel(SelectedCategory, rows, cols, time);
+            var gameViewModel = new GameViewModel(SelectedCategory, rows, cols, time, CurrentUsername);
             var gameView = new GameView();
             gameView.DataContext = gameViewModel;
             gameView.Show();
@@ -117,6 +127,60 @@ namespace MemoryGame.ViewModels
                 }
             }
         }
+        public ICommand SaveGameCommand { get; }
+        public ICommand OpenGameCommand { get; }
+        private void SaveGame()
+        {
+            // Trebuie să găsim fereastra GameView deschisă
+            var gameView = Application.Current.Windows.OfType<Views.GameView>().FirstOrDefault();
+            if (gameView == null)
+            {
+                MessageBox.Show("No game is currently open!");
+                return;
+            }
+
+            if (gameView.DataContext is GameViewModel gameViewModel)
+            {
+                var gameState = gameViewModel.CreateGameState();
+                GameSaveService.SaveGame(gameState, CurrentUsername); // o să adăugăm imediat CurrentUsername
+                MessageBox.Show("Game saved successfully!");
+            }
+        }
+
+        private void OpenGame()
+        {
+            var gameState = GameSaveService.LoadGame(CurrentUsername);
+            if (gameState == null)
+            {
+                MessageBox.Show("No saved game found for this user!");
+                return;
+            }
+
+            var gameViewModel = new GameViewModel(gameState.Category, gameState.Rows, gameState.Columns, gameState.TimeLeft, CurrentUsername);
+            gameViewModel.LoadFromGameState(gameState);
+
+            var gameView = new Views.GameView();
+            gameView.DataContext = gameViewModel;
+            gameView.Show();
+
+            foreach (var window in Application.Current.Windows)
+            {
+                if (window is Views.SetupView setupView)
+                {
+                    setupView.Close();
+                    break;
+                }
+            }
+        }
+        public ICommand OpenStatisticsCommand { get; }
+
+        private void OpenStatistics()
+        {
+            var statisticsView = new StatisticsView();
+            statisticsView.DataContext = new StatisticsViewModel();
+            statisticsView.ShowDialog();
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged([CallerMemberName] string name = null)
