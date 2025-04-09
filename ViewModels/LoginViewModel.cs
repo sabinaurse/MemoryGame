@@ -29,9 +29,10 @@ namespace MemoryGame.ViewModels
                 SelectedUsername = selectedUser?.Username;
                 SelectedImagePath = selectedUser?.ImagePath;
                 OnPropertyChanged();
-                UpdateCommandStates();
+                UpdateCommandStates();  // deja existent, deci e OK
             }
         }
+
 
         private string selectedUsername;
         public string SelectedUsername
@@ -74,7 +75,7 @@ namespace MemoryGame.ViewModels
             LoadUsersCommand = new RelayCommand(_ => LoadUsers());
             RegisterCommand = new RelayCommand(_ => Register(), _ => CanRegister());
             DeleteCommand = new RelayCommand(_ => DeleteUser(), _ => SelectedUsername != null);
-            PlayCommand = new RelayCommand(_ => Play(), _ => SelectedUsername != null);
+            PlayCommand = new RelayCommand(_ => Play(), _ => SelectedUser != null);
             BrowseImageCommand = new RelayCommand(_ => BrowseImage());
 
             LoadUsers();
@@ -106,7 +107,7 @@ namespace MemoryGame.ViewModels
         {
             var setupView = new SetupView();
             var setupViewModel = new SetupViewModel();
-            setupViewModel.CurrentUsername = SelectedUsername;
+            setupViewModel.CurrentUsername = SelectedUser?.Username; // <- MODIFICARE IMPORTANTĂ
             setupView.DataContext = setupViewModel;
             setupView.Show();
 
@@ -119,6 +120,7 @@ namespace MemoryGame.ViewModels
                 }
             }
         }
+
 
         private void BrowseImage()
         {
@@ -158,6 +160,7 @@ namespace MemoryGame.ViewModels
             (PlayCommand as RelayCommand)?.RaiseCanExecuteChanged();
             (RegisterCommand as RelayCommand)?.RaiseCanExecuteChanged();
         }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged([CallerMemberName] string name = null)

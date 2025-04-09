@@ -12,9 +12,7 @@ namespace MemoryGame.Services
         static GameSaveService()
         {
             if (!Directory.Exists(SaveFolder))
-            {
                 Directory.CreateDirectory(SaveFolder);
-            }
         }
 
         public static void SaveGame(GameState gameState, string username)
@@ -34,4 +32,5 @@ namespace MemoryGame.Services
             return JsonSerializer.Deserialize<GameState>(json);
         }
     }
+
 }

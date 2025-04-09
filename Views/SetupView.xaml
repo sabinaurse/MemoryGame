@@ -51,13 +51,16 @@
             <!-- 🔥 Butoane suplimentare uniformizate -->
             <StackPanel Orientation="Vertical" Margin="0,20,0,0" HorizontalAlignment="Center">
                 <Button Content="Open Game" Width="200" Height="40" Margin="0,5"
-                        Background="#FFCBA4" Foreground="Black" BorderBrush="#FF9A8B"/>
+        Command="{Binding OpenGameCommand}"
+        Background="#FFCBA4" Foreground="Black" BorderBrush="#FF9A8B"/>
                 <Button Content="Statistics" Width="200" Height="40" Margin="0,5"
         Command="{Binding OpenStatisticsCommand}"
         Background="#FFCBA4" Foreground="Black" BorderBrush="#FF9A8B"/>
 
-                <Button Content="Exit" Width="200" Height="40" Margin="0,5"
-                        Background="#FFCBA4" Foreground="Black" BorderBrush="#FF9A8B"/>
+                <Button Content="Back" Width="200" Height="40" Margin="0,5"
+        Command="{Binding BackCommand}"
+        Background="#FFCBA4" Foreground="Black" BorderBrush="#FF9A8B"/>
+
                 <Button Content="Help - About" Width="200" Height="40" Margin="0,5"
                         Command="{Binding AboutCommand}"
                         Background="#FFCBA4" Foreground="Black" BorderBrush="#FF9A8B"/>

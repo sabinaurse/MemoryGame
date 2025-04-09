@@ -186,8 +186,7 @@ namespace MemoryGame.ViewModels
             }
         }
 
-
-        private void SaveGame()
+        private void SaveGame(bool showConfirmation = true)
         {
             if (string.IsNullOrEmpty(CurrentUsername))
             {
@@ -197,8 +196,11 @@ namespace MemoryGame.ViewModels
 
             var gameState = CreateGameState();
             GameSaveService.SaveGame(gameState, CurrentUsername);
-            MessageBox.Show("Game saved successfully!");
+
+            if (showConfirmation)
+                MessageBox.Show("Game saved successfully!");
         }
+
 
 
         public GameState CreateGameState()
@@ -242,29 +244,19 @@ namespace MemoryGame.ViewModels
         public ICommand ExitGameCommand { get; }
         private void ExitGame()
         {
+            // Salvăm automat jocul curent înainte să ieșim
+            SaveGame(false);  // fără mesaj
+
             // Caută fereastra GameView
-            Views.GameView gameView = null;
-            foreach (var window in Application.Current.Windows)
-            {
-                if (window is Views.GameView gv)
-                {
-                    gameView = gv;
-                    break;
-                }
-            }
+            Views.GameView gameView = Application.Current.Windows.OfType<Views.GameView>().FirstOrDefault();
 
             if (gameView != null)
             {
-                // 1. Deschide LoginView
-                var loginView = new Views.LoginView();
-                loginView.DataContext = new LoginViewModel();
+                var loginView = new Views.LoginView { DataContext = new LoginViewModel() };
                 loginView.Show();
-
-                // 2. Abia apoi închide GameView
                 gameView.Close();
             }
         }
-
 
 
         public event PropertyChangedEventHandler PropertyChanged;

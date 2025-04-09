@@ -74,6 +74,7 @@ namespace MemoryGame.ViewModels
 
         public ICommand StartGameCommand { get; }
         public ICommand AboutCommand { get; }  // Declarația corectă a comenzii AboutCommand
+        public ICommand BackCommand { get; }
 
         public SetupViewModel()
         {
@@ -82,6 +83,7 @@ namespace MemoryGame.ViewModels
             SaveGameCommand = new RelayCommand(_ => SaveGame());
             OpenGameCommand = new RelayCommand(_ => OpenGame());
             OpenStatisticsCommand = new RelayCommand(_ => OpenStatistics()); // NOU
+            BackCommand = new RelayCommand(_ => Back());
         }
 
         private void OpenAboutWindow()
@@ -146,7 +148,14 @@ namespace MemoryGame.ViewModels
                 MessageBox.Show("Game saved successfully!");
             }
         }
+        private void Back()
+        {
+            var loginView = new LoginView { DataContext = new LoginViewModel() };
+            loginView.Show();
 
+            var setupView = Application.Current.Windows.OfType<SetupView>().FirstOrDefault();
+            setupView?.Close();
+        }
         private void OpenGame()
         {
             var gameState = GameSaveService.LoadGame(CurrentUsername);
@@ -159,19 +168,14 @@ namespace MemoryGame.ViewModels
             var gameViewModel = new GameViewModel(gameState.Category, gameState.Rows, gameState.Columns, gameState.TimeLeft, CurrentUsername);
             gameViewModel.LoadFromGameState(gameState);
 
-            var gameView = new Views.GameView();
-            gameView.DataContext = gameViewModel;
+            var gameView = new Views.GameView { DataContext = gameViewModel };
             gameView.Show();
 
-            foreach (var window in Application.Current.Windows)
-            {
-                if (window is Views.SetupView setupView)
-                {
-                    setupView.Close();
-                    break;
-                }
-            }
+            var setupView = Application.Current.Windows.OfType<Views.SetupView>().FirstOrDefault();
+            setupView?.Close();
         }
+
+
         public ICommand OpenStatisticsCommand { get; }
 
         private void OpenStatistics()
