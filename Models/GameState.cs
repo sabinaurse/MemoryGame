@@ -8,7 +8,7 @@ namespace MemoryGame.Models
         public int Rows { get; set; }
         public int Columns { get; set; }
         public int TimeLeft { get; set; }
-        public int TimeElapsed { get; set; }  // cât timp a trecut
+        public int TimeElapsed { get; set; } 
 
         public List<TileState> Tiles { get; set; } = new();
     }

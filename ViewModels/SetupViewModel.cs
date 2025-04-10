@@ -72,26 +72,24 @@ namespace MemoryGame.ViewModels
             set { timeLimit = value; OnPropertyChanged(); }
         }
 
-        public ICommand StartGameCommand { get; }
-        public ICommand AboutCommand { get; }  // Declarația corectă a comenzii AboutCommand
-        public ICommand BackCommand { get; }
-
         public SetupViewModel()
         {
             StartGameCommand = new RelayCommand(_ => StartGame());
-            AboutCommand = new RelayCommand(_ => OpenAboutWindow());  // Corect instanțierea comenzii
+            AboutCommand = new RelayCommand(_ => OpenAboutWindow()); 
             SaveGameCommand = new RelayCommand(_ => SaveGame());
             OpenGameCommand = new RelayCommand(_ => OpenGame());
-            OpenStatisticsCommand = new RelayCommand(_ => OpenStatistics()); // NOU
+            OpenStatisticsCommand = new RelayCommand(_ => OpenStatistics());
             BackCommand = new RelayCommand(_ => Back());
         }
 
+        public ICommand AboutCommand { get; }
         private void OpenAboutWindow()
         {
-            var aboutView = new AboutView();  // Asigură-te că AboutView este definit corect
-            aboutView.ShowDialog();  // Deschide AboutView ca fereastră modală
+            var aboutView = new AboutView(); 
+            aboutView.ShowDialog();
         }
 
+        public ICommand StartGameCommand { get; }
         private void StartGame()
         {
             int rows = 4;
@@ -130,10 +128,9 @@ namespace MemoryGame.ViewModels
             }
         }
         public ICommand SaveGameCommand { get; }
-        public ICommand OpenGameCommand { get; }
+
         private void SaveGame()
         {
-            // Trebuie să găsim fereastra GameView deschisă
             var gameView = Application.Current.Windows.OfType<Views.GameView>().FirstOrDefault();
             if (gameView == null)
             {
@@ -144,10 +141,12 @@ namespace MemoryGame.ViewModels
             if (gameView.DataContext is GameViewModel gameViewModel)
             {
                 var gameState = gameViewModel.CreateGameState();
-                GameSaveService.SaveGame(gameState, CurrentUsername); // o să adăugăm imediat CurrentUsername
+                GameSaveService.SaveGame(gameState, CurrentUsername); 
                 MessageBox.Show("Game saved successfully!");
             }
         }
+
+        public ICommand BackCommand { get; }
         private void Back()
         {
             var loginView = new LoginView { DataContext = new LoginViewModel() };
@@ -156,6 +155,8 @@ namespace MemoryGame.ViewModels
             var setupView = Application.Current.Windows.OfType<SetupView>().FirstOrDefault();
             setupView?.Close();
         }
+
+        public ICommand OpenGameCommand { get; }
         private void OpenGame()
         {
             var gameState = GameSaveService.LoadGame(CurrentUsername);

@@ -8,18 +8,15 @@
     <Grid Margin="20">
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="250">
 
-            <!-- Alegere categorie -->
             <TextBlock Text="Choose Category:" FontWeight="Bold" Margin="0,5"/>
             <ComboBox ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedCategory}" Margin="0,5"/>
 
-            <!-- Alegere mod de joc -->
             <TextBlock Text="Select Mode:" FontWeight="Bold" Margin="0,10,0,0"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5">
                 <RadioButton Content="Standard" IsChecked="{Binding IsStandardMode}" Margin="5"/>
                 <RadioButton Content="Custom" IsChecked="{Binding IsCustomMode}" Margin="5"/>
             </StackPanel>
 
-            <!-- Dimensiuni doar dacă e Custom -->
             <StackPanel Margin="0,10">
                 <StackPanel.Style>
                     <Style TargetType="StackPanel">
@@ -39,16 +36,13 @@
                 <ComboBox ItemsSource="{Binding AvailableSizes}" SelectedItem="{Binding SelectedColumns}" Width="100" Margin="0,5"/>
             </StackPanel>
 
-            <!-- Setare timp -->
             <TextBlock Text="Set Time (seconds):" FontWeight="Bold" Margin="0,10,0,0"/>
             <TextBox Text="{Binding TimeLimit}" Width="100" Margin="0,5" HorizontalAlignment="Center"/>
 
-            <!-- Buton Start Game -->
             <Button Content="Start Game" Command="{Binding StartGameCommand}" Margin="0,20,0,0"
                     Width="200" Height="40"
                     Background="#FFCBA4" Foreground="Black" BorderBrush="#FF9A8B"/>
 
-            <!-- 🔥 Butoane suplimentare uniformizate -->
             <StackPanel Orientation="Vertical" Margin="0,20,0,0" HorizontalAlignment="Center">
                 <Button Content="Open Game" Width="200" Height="40" Margin="0,5"
         Command="{Binding OpenGameCommand}"

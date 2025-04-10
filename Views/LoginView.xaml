@@ -4,7 +4,6 @@
         Title="Memory Game - Login" Height="450" Width="700"
         WindowStartupLocation="CenterScreen"
         Background="#FDECEF">
-    <!-- Rose Quartz -->
 
     <Grid Margin="20">
         <Grid.ColumnDefinitions>
@@ -12,7 +11,6 @@
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- Login existent -->
         <Border Grid.Column="0" Background="#EADCF8" CornerRadius="10" Padding="10" Margin="10">
             <StackPanel>
                 <TextBlock Text="Select Existing User" FontWeight="Bold" FontSize="16" Margin="0,0,0,10" Foreground="#333333"/>
@@ -39,7 +37,6 @@
             </StackPanel>
         </Border>
 
-        <!-- Creare cont nou -->
         <Border Grid.Column="1" Background="#EADCF8" CornerRadius="10" Padding="10" Margin="10">
             <StackPanel>
                 <TextBlock Text="Sign Up" FontWeight="Bold" FontSize="16" Margin="0,0,0,10" Foreground="#333333"/>
@@ -56,7 +53,7 @@
                             Background="#FFCBA4" Foreground="Black" BorderBrush="#FF9A8B"/>
                 </StackPanel>
 
-                <!-- Previzualizare imagine selectată -->
+
                 <Image Source="{Binding SelectedFullImagePath}" Width="80" Height="80" Margin="0,10,0,0" Stretch="UniformToFill" />
 
                 <Button Content="Register" Command="{Binding RegisterCommand}" Width="100" Margin="0,10,0,0"

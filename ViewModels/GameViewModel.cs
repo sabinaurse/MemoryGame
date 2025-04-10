@@ -31,13 +31,6 @@ namespace MemoryGame.ViewModels
             set { currentUsername = value; OnPropertyChanged(); }
         }
 
-        public ICommand FlipTileCommand { get; }
-        public ICommand SaveGameCommand { get; }
-
-        private Tile firstFlippedTile;
-        private Tile secondFlippedTile;
-        private bool canFlip = true;
-
         public GameViewModel(string category, int rows, int columns, int timeLimit, string username)
         {
             Category = category;
@@ -55,6 +48,7 @@ namespace MemoryGame.ViewModels
             StartTimer();
         }
 
+        #region Game Initialization
         private void GenerateTiles()
         {
             var imagesPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Tiles", Category);
@@ -111,16 +105,42 @@ namespace MemoryGame.ViewModels
                     timer.Stop();
                     MessageBox.Show("⏰ Timpul a expirat! Ai pierdut jocul.", "Game Over", MessageBoxButton.OK, MessageBoxImage.Warning);
 
-                    // ➔ Update statistici: doar GamesPlayed++
                     FileService.UpdateStatistics(CurrentUsername, won: false);
 
-                    ExitGame(); // ieșim înapoi la Login după pierdere
+                    ExitGame();
                 }
 
             };
             timer.Start();
         }
 
+        public GameState CreateGameState()
+        {
+            var gameState = new GameState
+            {
+                Category = Category,
+                Rows = Rows,
+                Columns = Columns,
+                TimeLeft = TimeLeft,
+                TimeElapsed = initialTimeLimit - TimeLeft,
+                Tiles = Tiles.Select(tile => new TileState
+                {
+                    ImagePath = tile.ImagePath,
+                    PairId = tile.PairId,
+                    IsFlipped = tile.IsFlipped,
+                    IsMatched = tile.IsMatched
+                }).ToList()
+            };
+            return gameState;
+        }
+        #endregion
+
+        #region Tile Flipping
+
+        private Tile firstFlippedTile;
+        private Tile secondFlippedTile;
+        private bool canFlip = true;
+        public ICommand FlipTileCommand { get; }
         private void FlipTile(Tile tile)
         {
             if (!canFlip || tile == null || tile.IsFlipped || tile.IsMatched)
@@ -149,7 +169,9 @@ namespace MemoryGame.ViewModels
                 delayTimer.Start();
             }
         }
+        #endregion
 
+        #region End of Game
         private void CheckMatch()
         {
             if (firstFlippedTile.PairId == secondFlippedTile.PairId)
@@ -179,13 +201,15 @@ namespace MemoryGame.ViewModels
                 timer.Stop();
                 MessageBox.Show("🏆 Felicitări! Ai câștigat jocul!", "Victory", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                // ➔ Update statistici: GamesPlayed++, GamesWon++
                 FileService.UpdateStatistics(CurrentUsername, won: true);
 
-                ExitGame(); // ieșim înapoi la Login după victorie
+                ExitGame(); 
             }
         }
+        #endregion
 
+        #region Game Saving
+        public ICommand SaveGameCommand { get; }
         private void SaveGame(bool showConfirmation = true)
         {
             if (string.IsNullOrEmpty(CurrentUsername))
@@ -200,29 +224,6 @@ namespace MemoryGame.ViewModels
             if (showConfirmation)
                 MessageBox.Show("Game saved successfully!");
         }
-
-
-
-        public GameState CreateGameState()
-        {
-            var gameState = new GameState
-            {
-                Category = Category,
-                Rows = Rows,
-                Columns = Columns,
-                TimeLeft = TimeLeft,
-                TimeElapsed = initialTimeLimit - TimeLeft,
-                Tiles = Tiles.Select(tile => new TileState
-                {
-                    ImagePath = tile.ImagePath,
-                    PairId = tile.PairId,
-                    IsFlipped = tile.IsFlipped,
-                    IsMatched = tile.IsMatched
-                }).ToList()
-            };
-            return gameState;
-        }
-
         public void LoadFromGameState(GameState gameState)
         {
             Tiles.Clear();
@@ -241,13 +242,13 @@ namespace MemoryGame.ViewModels
             TimeLeft = gameState.TimeLeft;
             OnPropertyChanged(nameof(TimeLeft));
         }
+        #endregion
+
         public ICommand ExitGameCommand { get; }
         private void ExitGame()
         {
-            // Salvăm automat jocul curent înainte să ieșim
-            SaveGame(false);  // fără mesaj
+            SaveGame(false);  
 
-            // Caută fereastra GameView
             Views.GameView gameView = Application.Current.Windows.OfType<Views.GameView>().FirstOrDefault();
 
             if (gameView != null)
@@ -257,7 +258,6 @@ namespace MemoryGame.ViewModels
                 gameView.Close();
             }
         }
-
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged([CallerMemberName] string name = null)

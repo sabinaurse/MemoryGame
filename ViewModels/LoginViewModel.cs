@@ -19,6 +19,7 @@ namespace MemoryGame.ViewModels
     public class LoginViewModel : INotifyPropertyChanged
     {
         public ObservableCollection<User> Users { get; set; } = new();
+
         private User selectedUser;
         public User SelectedUser
         {
@@ -29,10 +30,9 @@ namespace MemoryGame.ViewModels
                 SelectedUsername = selectedUser?.Username;
                 SelectedImagePath = selectedUser?.ImagePath;
                 OnPropertyChanged();
-                UpdateCommandStates();  // deja existent, deci e OK
+                UpdateCommandStates(); 
             }
         }
-
 
         private string selectedUsername;
         public string SelectedUsername
@@ -54,21 +54,12 @@ namespace MemoryGame.ViewModels
             {
                 selectedImagePath = value;
                 OnPropertyChanged();
-                OnPropertyChanged(nameof(SelectedFullImagePath)); // pentru preview imagine
+                OnPropertyChanged(nameof(SelectedFullImagePath));
                 UpdateCommandStates();
             }
         }
 
-        // Pentru previzualizare imagine în partea dreaptă
-        public string SelectedFullImagePath =>
-            string.IsNullOrEmpty(SelectedImagePath) ? null :
-            System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, SelectedImagePath).Replace("\\", "/");
-
-        public ICommand LoadUsersCommand { get; }
-        public ICommand RegisterCommand { get; }
-        public ICommand DeleteCommand { get; }
-        public ICommand PlayCommand { get; }
-        public ICommand BrowseImageCommand { get; }
+        public string SelectedFullImagePath => string.IsNullOrEmpty(SelectedImagePath) ? null : System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, SelectedImagePath).Replace("\\", "/");
 
         public LoginViewModel()
         {
@@ -81,6 +72,8 @@ namespace MemoryGame.ViewModels
             LoadUsers();
         }
 
+        #region User commands
+        public ICommand LoadUsersCommand { get; }
         private void LoadUsers()
         {
             Users.Clear();
@@ -88,6 +81,15 @@ namespace MemoryGame.ViewModels
                 Users.Add(user);
         }
 
+        public ICommand DeleteCommand { get; }
+        private void DeleteUser()
+        {
+            FileService.DeleteUser(SelectedUsername);
+            LoadUsers();
+            SelectedUsername = "";
+        }
+
+        public ICommand RegisterCommand { get; }
         private void Register()
         {
             var newUser = new User { Username = SelectedUsername, ImagePath = SelectedImagePath };
@@ -97,17 +99,20 @@ namespace MemoryGame.ViewModels
             SelectedImagePath = "";
         }
 
-        private void DeleteUser()
+        private bool CanRegister()
         {
-            FileService.DeleteUser(SelectedUsername);
-            LoadUsers();
-            SelectedUsername = "";
+            return !string.IsNullOrWhiteSpace(SelectedUsername) && !string.IsNullOrWhiteSpace(SelectedImagePath);
         }
+
+        #endregion
+
+        #region Play
+        public ICommand PlayCommand { get; }
         private void Play()
         {
             var setupView = new SetupView();
             var setupViewModel = new SetupViewModel();
-            setupViewModel.CurrentUsername = SelectedUser?.Username; // <- MODIFICARE IMPORTANTĂ
+            setupViewModel.CurrentUsername = SelectedUser?.Username; 
             setupView.DataContext = setupViewModel;
             setupView.Show();
 
@@ -120,8 +125,10 @@ namespace MemoryGame.ViewModels
                 }
             }
         }
+        #endregion
 
-
+        #region Image Browsing
+        public ICommand BrowseImageCommand { get; }
         private void BrowseImage()
         {
             var dialog = new OpenFileDialog
@@ -147,12 +154,7 @@ namespace MemoryGame.ViewModels
             }
         }
 
-
-        private bool CanRegister()
-        {
-            return !string.IsNullOrWhiteSpace(SelectedUsername) && !string.IsNullOrWhiteSpace(SelectedImagePath);
-        }
-
+        #endregion
 
         private void UpdateCommandStates()
         {

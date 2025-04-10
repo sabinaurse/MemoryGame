@@ -5,12 +5,11 @@ namespace MemoryGame.Models
 {
     public class Tile : INotifyPropertyChanged
     {
-        private bool isFlipped;
-        private bool isMatched;
 
         public string ImagePath { get; set; }
         public int PairId { get; set; }
 
+        private bool isFlipped;
         public bool IsFlipped
         {
             get => isFlipped;
@@ -24,6 +23,7 @@ namespace MemoryGame.Models
             }
         }
 
+        private bool isMatched;
         public bool IsMatched
         {
             get => isMatched;
