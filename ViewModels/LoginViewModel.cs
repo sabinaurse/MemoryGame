@@ -149,7 +149,7 @@ namespace MemoryGame.ViewModels
                 }
                 else
                 {
-                    System.Windows.MessageBox.Show("Te rog selectează o imagine din folderul Images al aplicației.");
+                    System.Windows.MessageBox.Show("Choose a picture from the Images folder of the app.");
                 }
             }
         }
